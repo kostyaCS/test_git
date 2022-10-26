@@ -31,12 +31,13 @@ Test_Olya/master/New%20folder/total.txt',3)
     return output_text
 
 
-
 def write_csv_file(url: str):
-    pass
-
-if __name__ == '__main__':
-    import doctest
-    print(doctest.testmod())
-
-
+    """
+    Writes info from read_input_file in file 'total.csv'
+    >>> write_csv_file('https://raw.githubusercontent.com/\
+anrom7/Test_Olya/master/New%20folder/total.txt')
+    """
+    with open('total.csv', 'w', encoding='utf-8') as new_file:
+        new_file.write('№,ПІБ,Д,Заг.бал,С.б.док.осв.\n')
+        for line in read_input_file(url, 78):
+            new_file.write(','.join(line) + '\n')
